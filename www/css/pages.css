@@ -8,7 +8,7 @@
 	margin-bottom:-14px
 }
 .panelGrid {
-	background-color: #A7EAB8;
+	background-color: #ffffff;
 }
 .itemGrid {
 	text-align: center;
@@ -87,7 +87,7 @@
 	float: left;
 	color: #FFAA00;
 	padding-right: 12px;
-	marging-top: 1px;
+	margin-top: 1px;
 	width: 285px;
 	height: 20px;
 	font-style: italic;
@@ -95,3 +95,32 @@
 .ui-content{
 	background-color: #238E23;
 }
+
+p#nuevo{
+	font-size: 1.5em;
+		border-bottom: 1px solid #9C9E9E;
+		margin-bottom: 20px;
+}
+
+p#nuevo-continuacion{
+	font-size: 1.5em;
+		border-bottom: 3px solid #9C9E9E;
+		margin-bottom: 20px;
+		margin-top: 47px;
+}
+
+p#formulario{
+	font-size: 1em;
+	padding: 6px;
+	width: 70%;
+	margin-left: 15%;
+	border-bottom: 1px solid #E6E5E5;
+	border-top: 1px solid #E6E5E5;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+.miBoton{
+	width: 10%;
+}
+

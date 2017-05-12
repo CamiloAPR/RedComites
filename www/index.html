@@ -6,11 +6,11 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-  	<link rel="stylesheet" href="css/jquery.mobile-custom.css" />
+  	<link rel="stylesheet" href="css/jquery.mobile-custom.css?v=<?=time();?>" />
     <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-  	<link rel="stylesheet" href="css/jquery.mobile.splitview.css" />
-    <link rel="stylesheet" href="css/jquery.mobile.grids.collapsible.css" />
-    <link rel="stylesheet" href="css/pages.css">
+  	<link rel="stylesheet" href="css/jquery.mobile.splitview.css?v=<?=time();?>" />
+    <link rel="stylesheet" href="css/jquery.mobile.grids.collapsible.css?v=<?=time();?>" />
+    <link rel="stylesheet" href="css/pages.css?v=<?=time();?>">
     <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="js/jquery.mobile.splitview.js"></script>
     <script type="text/javascript" src="js/jquery.mobile.js"></script>
@@ -34,7 +34,9 @@
           </div>
       		<ul data-role="listview" id="listaMenu" data-inset="true">
             <li><a href="#editarPerfil" data-panel="main">Editar Perfil</a></li>
+            <li><a href="#editarContrasena" data-panel="main">Editar contrase&ntilde;a</a></li>
             <li><a href="#comites" data-panel="main">Comités</a></li>
+            <li><a href="#editarComite" data-panel="main">Editar comit&eacute;</a></li>
             <li><a href="#publicaciones" data-panel="main">Publicaciones</a></li>
           </ul>
       	</div><!-- /content -->
@@ -85,10 +87,13 @@
 
         <div data-role="content"> 
 
+
+        <button type="submit" onclick="location.href='#insertarComite'">Nuevo comit&eacute;</button>
+
             <div class="panelGrid">
               <div class="ui-grid-b ui-responsive">
                     <div class="ui-block-a itemGrid">
-                      <a href=""><img src="iconos/icon_comunicaciones_circle.png" alt=""></a>
+                      <a href=""><img id="icono" src="iconos/icon_comunicaciones_circle.png" alt=""></a>
                       <h6>Comunicaciones</h6>
                     </div>
                     <div class="ui-block-b itemGrid">
@@ -136,7 +141,292 @@
         </div>
       </div><!-- /content -->
 
-         
+      <div data-role="page" id="insertarComite">
+
+        <div data-role="header">
+          <h1>Nuevo comit&eacute;</h1>
+        </div><!-- /header -->
+
+        <div data-role="content"> 
+
+
+
+            <div class="panelGrid">
+              <div  class="ui-grid-b ui-responsive">
+
+
+                   <div class="ui-block-a itemGrid">
+                      <p id="formulario">Nombre del comit&eacute;</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="text" name="nombre" placeholder="Ingresa el nombre del comit&eacute;">
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Contrase&ntilde;a</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="password" name="contrasena" placeholder="Ingresa la contrase&ntilde;a">
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Confirmar contrase&ntilde;a</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="password" name="conf_contrasena" placeholder="Ingresa nuevamente la contrase&ntilde;a">
+                    </div>
+                    
+              </div>
+               <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Contacto</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="text" name="correo" placeholder="Ingresa el correo">
+                    </div>
+                    
+              </div>
+               <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Integrantes</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="text" name="integrante">
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <table>
+                        <tr>
+                          <td>
+                            <button style="width: 10% !important;" type="submit" onclick="">+</button>      
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Logo</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <p>logo.png</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <table>
+                        <tr>
+                          <td>
+                            <button id="integrantes" type="submit" onclick="">Subir archivo</button>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Banner</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <p>banner.png</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <table>
+                        <tr>
+                          <td>
+                            <button id="integrantes" type="submit" onclick="">Subir archivo</button>                            
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+              </div>
+              <table style=" position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);">
+                      <tr>
+                        <td>
+                          <button id="integrantes" type="submit" onclick="">Cancelar</button>
+                        </td>
+                        <td>
+                          <button id="integrantes" type="submit" onclick="">Guardar</button>
+                        </td>
+                      </tr>
+              </table>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div data-role="page" id="editarComite">
+
+        <div data-role="header">
+          <h1>Editar comit&eacute;</h1>
+        </div><!-- /header -->
+
+        <div data-role="content"> 
+
+
+
+            <div class="panelGrid">
+              <div  class="ui-grid-b ui-responsive">
+
+
+                   <div class="ui-block-a itemGrid">
+                      <p id="formulario">Nombre del comit&eacute;</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="text" name="nombre" placeholder="Ingresa el nombre del comit&eacute;" value="Comit&eacute; de comunicaciones">
+                    </div>
+                    
+              </div>
+
+               <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Contacto</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="text" name="correo" placeholder="Ingresa el correo" value="comitecomunicaciones@unbosque.edu.co">
+                    </div>
+                    
+              </div>
+               <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Integrantes</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="text" name="integrante" value="Diego Fernando Rojas">
+                    </div>
+
+                    <div class="ui-block-b itemGrid">
+                                    
+                      <table>
+                              <tr>
+                                <td>
+                                  <input type="button" data-icon="edit">
+                                </td>
+                                <td>
+                                  <input type="button" data-icon="delete">
+                                </td>
+                              </tr>
+                      </table>
+
+
+                      
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Logo</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <p>logo.png</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <table>
+                        <tr>
+                          <td>
+                            <button id="integrantes" type="submit" onclick="">Editar logo</button>      
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Banner</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <p>banner.png</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <table>
+                        <tr>
+                          <td>
+                            <button id="integrantes" type="submit" onclick="">Editar banner</button>      
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+              </div>
+              <br><br>
+              <div class="ui-grid-b ui-responsive">
+              <table style=" position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);">
+                      <tr>
+                        <td>
+                          <button id="integrantes" type="submit" onclick="">Cancelar</button>
+                        </td>
+                        <td>
+                          <button id="integrantes" type="submit" onclick="">Guardar</button>
+                        </td>
+                      </tr>
+              </table>
+                </div>    
+          </div>
+        </div>
+      </div>
+
+      <div data-role="page" id="editarContrasena">
+
+        <div data-role="header">
+          <h1>Editar contrase&ntilde;a</h1>
+        </div><!-- /header -->
+
+        <div data-role="content"> 
+
+
+
+            <div class="panelGrid">
+              <div  class="ui-grid-b ui-responsive">
+
+
+                   <div class="ui-block-a itemGrid">
+                      <p id="formulario">Contrase&ntilde;a actual</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="password" name="contrasenaActual" >
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Nueva contrase&ntilde;a</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="password" name="contrasena" >
+                    </div>
+                    
+              </div>
+              <div class="ui-grid-b ui-responsive">
+
+                    <div class="ui-block-a itemGrid">
+                      <p id="formulario">Confirma la nueva contrase&ntilde;a</p>
+                    </div>
+                    <div class="ui-block-b itemGrid">
+                      <input type="password" name="conf_contrasena" >
+                    </div>
+                    
+              </div>
+               
+          </div>
+        </div>
+      </div>
 
       <div data-role="page" id="publicaciones">
         <div data-role="header">
