@@ -7,7 +7,6 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
   	<link rel="stylesheet" href="css/jquery.mobile-custom.css?v=<?=time();?>" />
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
   	<link rel="stylesheet" href="css/jquery.mobile.splitview.css?v=<?=time();?>" />
     <link rel="stylesheet" href="css/jquery.mobile.grids.collapsible.css?v=<?=time();?>" />
     <link rel="stylesheet" href="css/pages.css?v=<?=time();?>">
@@ -19,15 +18,12 @@
   </head> 
 
   <body> 
-
     <div data-role="panel" data-id="menu" data-hash="crumbs" data-context="b#default">
-
       <!-- MENÚ LATERAL -->
       <div data-role="page" id="main" data-hash="false">
       	<div data-role="header">
           <h1></h1>
       	</div><!-- /header -->
-
       	<div data-role="content">	
           <div id="avatarLateral" >
 
@@ -91,7 +87,7 @@
         <button type="submit" onclick="location.href='#insertarComite'">Nuevo comit&eacute;</button>
 
             <div class="panelGrid">
-              <div class="ui-grid-b ui-responsive">
+              <div class="ui-grid-a ui-responsive">
                     <div class="ui-block-a itemGrid">
                       <a href=""><img id="icono" src="iconos/icon_comunicaciones_circle.png" alt=""></a>
                       <h6>Comunicaciones</h6>
@@ -100,19 +96,19 @@
                       <a href=""><img src="iconos/icon_continuada_circle.png" alt=""></a>
                       <h6>Educaci&oacute;n continuada</h6>
                     </div>
-                    <div class="ui-block-c itemGrid">
+                    <div class="ui-block-a itemGrid">
                       <a href=""><img src="iconos/icon_calidad_circle.png" alt=""></a>
                       <h6>Calidad</h6>
                     </div>
-                    <div class="ui-block-a itemGrid">
+                    <div class="ui-block-b itemGrid">
                       <a href=""><img src="iconos/icon_curricular_circle.png" alt=""></a>
                       <h6>Curricular</h6>
                     </div>
-                    <div class="ui-block-b itemGrid">
+                    <div class="ui-block-a itemGrid">
                       <a href=""><img src="iconos/icon_egresados_circle.png" alt=""></a>
                       <h6>Egresados</h6>
                     </div>
-                    <div class="ui-block-c itemGrid">
+                    <div class="ui-block-b itemGrid">
                       <a href=""><img src="iconos/icon_exito_circle.png" alt=""></a>
                       <h6>&Eacute;xito estudiantil</h6>
                     </div>
@@ -124,15 +120,15 @@
                       <a href=""><img src="iconos/icon_internacionalizacion_circle.png" alt=""></a>
                       <h6>Internacionalizaci&oacute;n</h6>
                     </div>
-                    <div class="ui-block-c itemGrid">
+                    <div class="ui-block-a itemGrid">
                       <a href=""><img src="iconos/icon_investigacion_circle.png" alt=""></a>
                       <h6>Investigaciones</h6>
                     </div>
-                    <div class="ui-block-a itemGrid">
+                    <div class="ui-block-b itemGrid">
                       <a href=""><img src="iconos/icon_rsu_circle.png" alt=""></a>
                       <h6>RSU</h6>
                     </div>
-                    <div class="ui-block-b itemGrid">
+                    <div class="ui-block-a itemGrid">
                       <a href=""><img src="iconos/icon_tic_circle.png" alt=""></a>
                       <h6>TIC</h6>                    
                   </div>
@@ -146,22 +142,15 @@
         <div data-role="header">
           <h1>Nuevo comit&eacute;</h1>
         </div><!-- /header -->
-
         <div data-role="content"> 
-
-
-
             <div class="panelGrid">
               <div  class="ui-grid-b ui-responsive">
-
-
                    <div class="ui-block-a itemGrid">
                       <p id="formulario">Nombre del comit&eacute;</p>
                     </div>
                     <div class="ui-block-b itemGrid">
                       <input type="text" name="nombre" placeholder="Ingresa el nombre del comit&eacute;">
                     </div>
-                    
               </div>
               <div class="ui-grid-b ui-responsive">
 
@@ -228,8 +217,7 @@
                           </td>
                         </tr>
                       </table>
-                    </div>
-                    
+                    </div>  
               </div>
               <div class="ui-grid-b ui-responsive">
 
@@ -434,53 +422,51 @@
         </div>
 
         <div data-role="main" class="ui-content">
-              <div class="panelGrid">
-                <div class="destacado">
-                    <div class="encabezado">
-                      <div class="titulo">
-                        T&iacute;tulo
-                      </div>
-                      <div class="iconos"><a href="#"><img src="ojo.png" width="27" height="27" border="0"><a style="margin-left: 5px" href="#"><img src="trash.png" width="27" height="27" border="0"></a></div>
-              <!--      <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-lock ui-btn-icon-notext"></a>
-              -->   </div>
-                    <div class="contenido">
-                      <div class="resumen">
-                      Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia vestibulum...</div>
-                      <div class="imagen"></div>
-                      <div class="comite">Responsabilidad Social</div>
+            <div class="public-destacado">
+                  <div class="public-encabezado">
+                    <div class="public-titulo">
+                      T&iacute;tulo
                     </div>
+                    <div class="public-iconos"><a href="#"><img src="ojo.png" width="27" height="27" border="0"><a style="margin-left: 5px" href="#"><img src="trash.png" width="27" height="27" border="0"></a></div>
+            <!--      <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-lock ui-btn-icon-notext"></a>
+            -->      </div>
+                  <div class="contenido">
+                    <div class="public-resumen">
+                    Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia vestibulum...</div>
+                    <div class="public-imagen"></div>
+                    <div class="public-comite">Responsabilidad Social</div>
+                  </div>
                 </div>
-                <div class="destacado">
-                    <div class="encabezado">
-                      <div class="titulo">
-                        T&iacute;tulo
+                <div class="public-destacado">
+                  <div class="public-encabezado">
+                    <div class="public-titulo">
+                      T&iacute;tulo
                     </div>
-                    <div class="iconos"><a href="#"><img src="ojo.png" width="27" height="27" border="0"><a style="margin-left: 5px" href="#"><img src="trash.png" width="27" height="27" border="0"></a></div>
-              <!--      <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-lock ui-btn-icon-notext"></a>
-              -->   </div>
-                    <div class="contenido">
-                      <div class="resumen">
-                      Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia vestibulum...</div>
-                      <div class="imagen"></div>
-                      <div class="comite">Responsabilidad Social</div>
-                    </div>
+                    <div class="public-iconos"><a href="#"><img src="ojo.png" width="27" height="27" border="0"><a style="margin-left: 5px" href="#"><img src="trash.png" width="27" height="27" border="0"></a></div>
+            <!--      <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-lock ui-btn-icon-notext"></a>
+            -->      </div>
+                  <div class="contenido">
+                    <div class="public-resumen">
+                    Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia vestibulum...</div>
+                    <div class="public-imagen"></div>
+                    <div class="public-comite">Responsabilidad Social</div>
+                  </div>
                 </div>
-                <div class="destacado">
-                    <div class="encabezado">
-                      <div class="titulo">
-                        T&iacute;tulo
-                      </div>
-                      <div class="iconos"><a href="#"><img src="ojo.png" width="27" height="27" border="0"><a style="margin-left: 5px" href="#"><img src="trash.png" width="27" height="27" border="0"></a></div>
-              <!--      <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-lock ui-btn-icon-notext"></a>-->
+                <div class="public-destacado">
+                  <div class="public-encabezado">
+                    <div class="public-titulo">
+                      T&iacute;tulo
                     </div>
-                    <div class="contenido">
-                      <div class="resumen">
-                      Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia vestibulum...</div>
-                      <div class="imagen"></div>
-                      <div class="comite">Responsabilidad Social</div>
-                    </div>
-                </div>
-              </div>
+                    <div class="public-iconos"><a href="#"><img src="ojo.png" width="27" height="27" border="0"><a style="margin-left: 5px" href="#"><img src="trash.png" width="27" height="27" border="0"></a></div>
+            <!--      <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-lock ui-btn-icon-notext"></a>
+            -->      </div>
+                  <div class="contenido">
+                    <div class="public-resumen">
+                    Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia vestibulum...</div>
+                    <div class="public-imagen"></div>
+                    <div class="public-comite">Responsabilidad Social</div>
+                  </div>
+            </div>
         </div>
 
       </div> 

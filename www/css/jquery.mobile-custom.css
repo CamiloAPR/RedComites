@@ -13,10 +13,9 @@
 /* A
 -----------------------------------------------------------------------------------------------------------*/
 .ui-bar-a {
-	background-color: #145114;
+	background-color: #f5f5f5;
 	text-shadow: none;
-	color: #FFF;
-	border: 1px solid 		#FFF /*{a-bar-border}*/;
+	border-bottom: 3px solid 		#E97618 /*{a-bar-border}*/;
 	font-weight: bold;
 }
 .ui-bar-a,

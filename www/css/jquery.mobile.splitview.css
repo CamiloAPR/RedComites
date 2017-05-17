@@ -2,11 +2,7 @@ body {
   visibility: hidden;
 }
 
-.ui-panel {
-  -moz-box-shadow: 0 0 12px rgba(0,0,0,.6);
-  -webkit-box-shadow: 0 0 12px rgba(0,0,0,.6);
-  box-shadow: 0 0 12px rgba(0,0,0,.6);
-}
+
 
 div[data-id="main"] {
   z-index: 9999;
