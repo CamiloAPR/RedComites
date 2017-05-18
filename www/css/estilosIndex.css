@@ -66,3 +66,23 @@
 	padding: 15px;
 	font-style: bold;
 }
+.comite-buscar {
+	height: 35px;
+	padding-left: 15px;
+	border-bottom: solid;
+	border-bottom-width: thin;
+}
+.comite-tags {
+	padding: 15px;
+	font-style: bold;
+}
+.comite-acercade {
+	font-weight: lighter;
+}
+.comite-icono {
+	padding-top: 5px;
+	margin-left: 95px;
+}
+.comite {
+	background-color: #AECC60;	
+}
