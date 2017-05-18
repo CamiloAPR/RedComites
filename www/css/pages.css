@@ -1,6 +1,13 @@
 #listaMenu{
 	margin-top: 0;
 }
+.logoUEB{
+	margin-left: 35px;
+	padding-top: 2px;
+	float: left;
+	width: 105px;
+	height: 30px;
+}
 #avatarLateral{
 	background: rgba(255, 255, 255, 0.68);
 	height:150px;
@@ -13,9 +20,11 @@
 }
 .itemGrid {
 	text-align: center;
+	text-shadow: none;
 	margin-top: 5px;
 	padding-left: 3px;
 	padding-right: 3px;
+	font-weight: bold;
 }
 .ui-content{
 	background-color: #0d7984;
@@ -115,5 +124,12 @@ p#formulario{
 
 .miBoton{
 	width: 10%;
+}
+#pie{
+	padding-bottom: 10px;
+	height: 10px;
+	text-align: center;	
+	font-size: 12px;
+	font-weight: lighter;
 }
 
