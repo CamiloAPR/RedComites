@@ -1,4 +1,4 @@
-$(document).on("pageshow","#main",function(){
+$(document).on("pagebeforeshow","#main",function(){
     var htmlTemplate="<li>"+
     			"<div class='ui-block-a itemGrid' style='background-color: $color'>"+
                       "<a href=''><img  src='$icon' alt=''></a>"+
@@ -14,15 +14,54 @@ $(document).on("pageshow","#main",function(){
     }
 
     // db_service.get("/committee", callback);
+    var comitesTemplate = '<li class="comite">'+
+        '<a style="background-color:$color;" href="#comunicaciones" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> '+
+          '<div class="botonMenu" >'+
+            '<div class="punto"><img src="$logo" width="26" height="26" border="0"></div>'+
+            '<div class="nombre">$name</div>'+
+          '</div>'+
+       ' </a>'+
+      '</li>'
+    var data = [ 
+      {name:"Responsabilidad Social", color:"#FF7D1F", page:"#", logo:"iconos/icon_rsu_circle.png"},
+      {name:"Egresados", color:"#4C6BA2", page:"#", logo:"iconos/icon_egresados_circle.png"},
+      {name:"Calidad", color:"#E52B33", page:"#", logo:"iconos/icon_calidad_circle.png"},
+      {name:"Educación Continuada", color:"#20B07F", page:"#", logo:"iconos/icon_continuada_circle.png"},
+      {name:"Curricular", color:"#F15A4B", page:"#", logo:"iconos/icon_curricular_circle.png"},
+      {name:"Comunicaciones", color:"#AECC60", page:"#", logo:"iconos/icon_comunicaciones_circle.png"},
+      {name:"Investigaciones", color:"#C12E86", page:"#", logo:"iconos/icon_investigacion_circle.png"},
+      {name:"Externo", color:"#619543", page:"#", logo:"iconos/icon_externo_circle.png"},
+      {name:"Éxito Estudiantil", color:"#662D91", page:"#", logo:"iconos/icon_exito_circle.png"},
+      {name:"Internacionalización", color:"#42BDED", page:"#", logo:"iconos/icon_internacionalizacion_circle.png"},
+      {name:"TIC", color:"#F9B924", page:"#", logo:"iconos/icon_tic_circle.png"}
+    ];
+    var dataComitesTemplate = [{field: "color"}, {field: "name"},{field: "page"},{field: "logo"}]
+    ux_service.createHTMLComponents(comitesTemplate, dataComitesTemplate, $("#listaCommites"), data);
+
+    var publicacionesTemplate = '<div class="public-destacado">'+
+      '<div style="background-color: $color" class="public-encabezado">'+
+        '<div class="public-titulo">$title </div>'+
+        '<div class="public-fecha">$date</div>'+
+      '<div class="public-contenido">'+
+        '<div class="public-resumen">$content</div>'+
+        '<div class="public-imagen"></div>'+
+        '<div style="color: $color;" class="public-comite">$name</div>'+
+      '</div></div></div>';
+
+    var dataPublicacionesTemplate = [{field: "color"}, {field: "name"},{field: "content"},{field: "date"}]
+    data = [ 
+      {name:"Responsabilidad Social", color:"#FF7D1F", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Egresados", color:"#4C6BA2", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Calidad", color:"#E52B33", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Educación Continuada", color:"#20B07F", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Curricular", color:"#F15A4B", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Comunicaciones", color:"#AECC60", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Investigaciones", color:"#C12E86", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Externo", color:"#619543", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Éxito Estudiantil", color:"#662D91", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"Internacionalización", color:"#42BDED", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
+      {name:"TIC", color:"#F9B924", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."}
+    ];
+    ux_service.createHTMLComponents(publicacionesTemplate, dataPublicacionesTemplate, $("#divPublicaciones"), data);
+
 });
-// var panelPage= '<div data-role="page" id="main" data-hash="false">       <div data-role="header">          <div class="logoUEB">            <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">          </div>          <h1></h1>          <a href="#publicaciones_historicas" data-panel="main" data-role="button" data-icon="home" data-theme="c" class="ui-btn-right ui-icon-home" data-iconpos="notext">inicio</a>        </div><!-- /header -->        <div data-role="content">  <!-- <div data-role="main" style="background-color: #f2f2f2;" class="ui-content"> -->    <div class="titulo">            <h1>Comit&eacute;s Facultad de Ingenier&iacute;a</h1>    </div>    <ul id="listaCommites" data-role="listview" data-inset="true">          <li>        <a style="background-color:#FF7D1F;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_rsu_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Responsabilidad Social</div>          </div>        </a>      </li>      <li>        <a style="background-color:#4C6BA2;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_egresados_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Egresados</div>          </div>        </a>      </li>      <li>        <a style="background-color:#E52B33;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_calidad_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Calidad</div>          </div>        </a>      </li>      <li>        <a style="background-color:#20B07F;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_continuada_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Educaci&oacute;n Continuada</div>          </div>        </a>      </li>        <li>        <a style="background-color:#F15A4B;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_curricular_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Curricular</div>          </div>        </a>      </li>      <li>        <a style="background-color:#AECC60;" href="#comiteComunicaciones" data-panel="main">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_comunicaciones_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Comunicaciones</div>          </div>        </a>      </li>      <li>        <a style="background-color:#C12E86;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_investigacion_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Investigaciones</div>          </div>        </a>      </li>      <li>        <a style="background-color:#619543;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_externo_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Externo</div>          </div>        </a>      </li>      <li>        <a style="background-color:#662D91;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_exito_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">&Eacute;xito Estudiantil</div>          </div>        </a>      </li>      <li>        <a style="background-color:#42BDED;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_internacionalizacion_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">Internacionalizaci&oacute;n</div>          </div>        </a>      </li>      <li>        <a style="background-color:#F9B924;" href="#">          <div class="botonMenu" >            <div class="punto"><img src="iconos/icon_tic_circle.png" width="26" height="26" border="0"></div>            <div class="nombre">TIC</div>          </div>        </a>      </li>    </ul>  <!-- </div> -->        </div><!-- /content -->'
-// var panel = '<div data-role="panel" id="mypanel" data-position="left" data-hash="crumbs" data-context="b#default" data-swipe-close="false" data-dismissible="false">'+panelPage+' </div'
-// $(document).one('pagebeforecreate', function () {
-//     $.mobile.pageContainer.prepend(panel);
-//     $("#mypanel").panel().enhanceWithin();
-// $( "#mypanel" ).panel( "open");
-//     $("[data-role='header']").append('<a href="#mypanel" class="ui-btn ui-btn-left ui-btn-icon-notext ui-icon-grid ui-corner-all"></a>')
-// });
-// $(document).on('pagebeforeshow', function(){       
-//     $( "#mypanel" ).panel( "open");
-// });
