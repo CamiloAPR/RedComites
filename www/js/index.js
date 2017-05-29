@@ -41,12 +41,12 @@ $(document).on("pagebeforeshow","#main",function(){
     var publicacionesTemplate = '<div class="public-destacado">'+
       '<div style="background-color: $color" class="public-encabezado">'+
         '<div class="public-titulo">$title </div>'+
-        '<div class="public-fecha">$date</div>'+
+        '<div class="public-fecha">$date</div></div>'+
       '<div class="public-contenido">'+
         '<div class="public-resumen">$content</div>'+
         '<div class="public-imagen"></div>'+
         '<div style="color: $color;" class="public-comite">$name</div>'+
-      '</div></div></div>';
+      '</div></div>';
 
     var dataPublicacionesTemplate = [{field: "color"}, {field: "name"},{field: "content"},{field: "date"}]
     data = [ 
