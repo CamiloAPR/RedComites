@@ -1,4 +1,41 @@
+
+
+
 $(document).on("pagebeforeshow","#main",function(){
+
+
+    /*
+    * Login function
+    */
+    $("#formLogin").submit(function( event ) {
+
+      if($("#formLogin") !== undefined){
+        return true;
+      }else{
+        var email = $('#correo').val();
+        var password = $('#clave').val();
+
+        var callback = function(data){
+          if(data["role"] === 1){
+            $('#formLogin').attr('action', 'indexAdmin.html');
+          }else if( data["role"] === 2){
+            $('#formLogin').attr('action', 'indexCommittee.html');
+          }
+          $.mobile.changePage($('#formLogin').attr('action'), {
+            transition: "pop",
+            reverse: false,
+            changeHash: false
+          });
+                    // $('#formLogin').submit();
+        }
+        db_service.post("login/", {email: email, password: password}, callback);
+
+        console.log($('#formLogin').attr('action'))
+      } 
+
+    });
+
+
     var htmlTemplate="<li>"+
     			"<div class='ui-block-a itemGrid' style='background-color: $color'>"+
                       "<a href=''><img  src='$icon' alt=''></a>"+
@@ -13,30 +50,35 @@ $(document).on("pagebeforeshow","#main",function(){
       return ux_service.createHTMLComponents(htmlTemplate, dataTemplate, lista, data);
     }
 
-    // db_service.get("/committee", callback);
+    // db_service.get("committee/", callback);
     var comitesTemplate = '<li class="comite">'+
         '<a style="background-color:$color;" href="#comunicaciones" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> '+
           '<div class="botonMenu" >'+
-            '<div class="punto"><img src="$logo" width="26" height="26" border="0"></div>'+
+            '<div class="punto"><img src="$icon" width="26" height="26" border="0"></div>'+
             '<div class="nombre">$name</div>'+
           '</div>'+
        ' </a>'+
       '</li>'
     var data = [ 
-      {name:"Responsabilidad Social", color:"#FF7D1F", page:"#", logo:"iconos/icon_rsu_circle.png"},
-      {name:"Egresados", color:"#4C6BA2", page:"#", logo:"iconos/icon_egresados_circle.png"},
-      {name:"Calidad", color:"#E52B33", page:"#", logo:"iconos/icon_calidad_circle.png"},
-      {name:"Educación Continuada", color:"#20B07F", page:"#", logo:"iconos/icon_continuada_circle.png"},
-      {name:"Curricular", color:"#F15A4B", page:"#", logo:"iconos/icon_curricular_circle.png"},
-      {name:"Comunicaciones", color:"#AECC60", page:"#", logo:"iconos/icon_comunicaciones_circle.png"},
-      {name:"Investigaciones", color:"#C12E86", page:"#", logo:"iconos/icon_investigacion_circle.png"},
-      {name:"Externo", color:"#619543", page:"#", logo:"iconos/icon_externo_circle.png"},
-      {name:"Éxito Estudiantil", color:"#662D91", page:"#", logo:"iconos/icon_exito_circle.png"},
-      {name:"Internacionalización", color:"#42BDED", page:"#", logo:"iconos/icon_internacionalizacion_circle.png"},
-      {name:"TIC", color:"#F9B924", page:"#", logo:"iconos/icon_tic_circle.png"}
+      {name:"Responsabilidad Social", color:"#FF7D1F", page:"#", icon:"iconos/icon_rsu_circle.png"},
+      {name:"Egresados", color:"#4C6BA2", page:"#", icon:"iconos/icon_egresados_circle.png"},
+      {name:"Calidad", color:"#E52B33", page:"#", icon:"iconos/icon_calidad_circle.png"},
+      {name:"Educación Continuada", color:"#20B07F", page:"#", icon:"iconos/icon_continuada_circle.png"},
+      {name:"Curricular", color:"#F15A4B", page:"#", icon:"iconos/icon_curricular_circle.png"},
+      {name:"Comunicaciones", color:"#AECC60", page:"#", icon:"iconos/icon_comunicaciones_circle.png"},
+      {name:"Investigaciones", color:"#C12E86", page:"#", icon:"iconos/icon_investigacion_circle.png"},
+      {name:"Externo", color:"#619543", page:"#", icon:"iconos/icon_externo_circle.png"},
+      {name:"Éxito Estudiantil", color:"#662D91", page:"#", icon:"iconos/icon_exito_circle.png"},
+      {name:"Internacionalización", color:"#42BDED", page:"#", icon:"iconos/icon_internacionalizacion_circle.png"},
+      {name:"TIC", color:"#F9B924", page:"#", icon:"iconos/icon_tic_circle.png"}
     ];
-    var dataComitesTemplate = [{field: "color"}, {field: "name"},{field: "page"},{field: "logo"}]
-    ux_service.createHTMLComponents(comitesTemplate, dataComitesTemplate, $("#listaCommites"), data);
+    var dataComitesTemplate = [{field: "color"}, {field: "name"},{field: "page"},{field: "icon"}]
+    // ux_service.createHTMLComponents(comitesTemplate, dataComitesTemplate, $("#listaCommites"), data);
+    lista=$("#listaCommites");
+    callback = function(data){
+      return ux_service.createHTMLComponents(comitesTemplate, dataComitesTemplate, lista, data);
+    }
+    db_service.get("/committee", callback);
 
     var publicacionesTemplate = '<div class="public-destacado">'+
       '<div style="background-color: $color" class="public-encabezado">'+
@@ -64,4 +106,17 @@ $(document).on("pagebeforeshow","#main",function(){
     ];
     ux_service.createHTMLComponents(publicacionesTemplate, dataPublicacionesTemplate, $("#divPublicaciones"), data);
 
+
+
+
+
+
+
+  $('div[data-role="dialog"]').on('pagebeforeshow', function(e, ui) {
+    ui.prevPage.addClass("ui-dialog-background ");
+  });
+  
+  $('div[data-role="dialog"]').on('pagehide', function(e, ui) {
+    $(".ui-dialog-background ").removeClass("ui-dialog-background ");
+  });
 });

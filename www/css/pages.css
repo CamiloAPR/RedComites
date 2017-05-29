@@ -146,7 +146,16 @@ p#formulario{
 .ui-panel-inner {
 	padding: 0;
 }
-.pie{
+
+.ui-dialog
+{
+    background-color: rgba(34,34,34,0.25) !important;
+}
+
+.ui-dialog.ui-overlay-a 
+{
+    background-image: none;
+}.pie{
 	height: 100%;
 	text-align: center;
 	padding-top: 7px;

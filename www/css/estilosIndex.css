@@ -83,13 +83,24 @@
 .comite {
 	background-color: #AECC60;	
 }
-.tablist-left {
-    width: 25%;
-    display: inline-block;
+
+.ui-dialog-background {
+	opacity: 0.5;
+	display: block !important;
+	-webkit-transition: opacity 0.5s ease-in;
 }
-.tablist-content {
-    width: 75%;
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 5%;
+
+.ui-dialog-background.pop.in {
+	opacity: 1;
+	-webkit-transition: opacity 0.5s ease-in;
+}
+
+.ui-dialog {
+	min-height: 100% !important;
+	background: transparent !important;
+}
+
+.formLabel{
+	text-align:left;
+	color: #FFF;
 }
