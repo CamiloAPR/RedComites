@@ -13,7 +13,6 @@ var db_service = {
             url: host+url,
             type: 'GET',
             success: function(data, textStatus, jqXHR){
-                console.log(callback)
                 callback(data);
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -21,7 +20,7 @@ var db_service = {
                 console.log(jqXHR.responseText);
                 console.log(errorThrown);
                 console.log(textStatus);
-                alert(jqXHR.responseText);
+                // alert(jqXHR.responseText);
             }
         });
     }
@@ -34,8 +33,6 @@ var db_service = {
     * @params callback: The callback function.
     */
     , post: function(url, _data, callback){
-                console.log(url)
-        console.log(_data)
         $.ajax({
             url: host+url,
             type: 'POST',
@@ -43,15 +40,13 @@ var db_service = {
             // contentType:"application/json",                         
             success: function(data, textStatus, jqXHR){
                 callback(data);
-                return true;
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error, ubicación: '+ host+url);
                 console.log(jqXHR.responseText);
                 console.log(errorThrown);
                 console.log(textStatus);
-                alert(jqXHR.responseText);
-                return false;
+                // alert(jqXHR.responseText);
             }          
         });
     }
@@ -80,7 +75,7 @@ var db_service = {
                 console.log(jqXHR.responseText);
                 console.log(errorThrown);
                 console.log(textStatus);
-                alert(jqXHR.responseText);
+                callback(JSON.parse(jqXHR.responseText));
                 return false;
             }          
         });
@@ -100,7 +95,6 @@ var db_service = {
             // contentType:"application/json",                         
             success: function(data, textStatus, jqXHR){
                 callback(data);
-                return true;
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error, ubicación: '+ host+url);

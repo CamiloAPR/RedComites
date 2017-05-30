@@ -6,20 +6,35 @@
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-tap-highlight" content="no" />
       <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-      <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-      <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-      <link rel="stylesheet" href="css/pages.css">
+      <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+      <script src="js/jquery-1.11.3.min.js"></script>
+      <script src="js/jquery.mobile-1.4.5.min.js"></script>
+       <link rel="stylesheet" href="css/pages.css">
       <link rel="stylesheet" href="css/estilosIndex.css">
       <script type="text/javascript" src="js/provider/db_service.js"></script>
       <script type="text/javascript" src="js/provider/ux_service.js"></script>
       <script type="text/javascript" src="js/index.js"></script>
+      <style type="text/css">
+            .tablist-left {
+                width: 25%;
+                display: inline-block;
+            }
+            .tablist-content {
+                width: 60%;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 5%;
+            }
+
+      </style>
     </head> 
 
     <body> 
       <div data-role="page" id="main">
-
-          <div data-role="header">
+          <div data-role="panel" id="right-panel" data-dismissible="false" data-display="reveal" data-position="left" style="margin: 0; background-color: #0d7984">
+           
+          </div><!-- /panel -->
+          <div data-role="header" data-position="fixed">
             <a href="#right-panel"  data-role="button" data-icon="home" data-theme="c" class="ui-btn-left ui-icon-home" data-iconpos="notext">Share</a>
             <div class="logoUEB">
               <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">
@@ -28,20 +43,18 @@
             
             <a href="#dialogoLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
           </div>
-
-          <div data-role="content">
-            <div id="divPublicaciones" style="text-align:center">
-            </div>
-
+          <div data-role="tabs">
+              <div class="tablist-left" data-position="fixed">
+                  <div class="titulo">
+                          <h1>Comités Facultad de Ingeniería</h1>
+                  </div>
+                  <ul id="listaCommites" data-role="listview" data-inset="true" >
+                      
+                  </ul>
+              </div>
+              <div id="divPublicaciones"  class="ui-body-d tablist-content" style="text-align:center">
+              </div>
           </div>
-          <div data-role="panel" id="right-panel" data-dismissible="false" data-display="reveal" data-position="left" style="margin: 0; background-color: #0d7984">
-           <div class="titulo">
-                    <h1>Comités Facultad de Ingeniería</h1>
-            </div>
-            <ul id="listaCommites" data-role="listview" data-inset="true" >
-                
-            </ul>
-          </div><!-- /panel -->
       </div> 
       <div data-role="dialog" data-corners="false"  data-theme="a" data-close-btn="right" id="dialogoLogin">
 
@@ -52,12 +65,13 @@
             <h1>INGRESA TUS DATOS</h1>
           </div>
 
-          <div data-role="content" style="background: #7BC142; text-align:center">
-            <form id="formLogin" method="post" action="">
-                <input type="email" name="correo" id="correo" value="" placeholder="Correo electrónico"/>
-                <input type="password" name="clave" id="clave" value="" placeholder="Contraseña"/>
+          <div data-role="content" id="dialogContent" style="background: #7BC142; text-align:center">
+            <form id="formLogin" method="post" action="#">
+                <input type="email" id="email" placeholder="Correo electrónico" required/>
+                <input type="password" id="password" placeholder="Contraseña" required/>
                 <button type="submit" class="ui-btn ui-btn-inline" style="background-color:#CCFFA3;font-size:0.8em">Iniciar Sesión</button>
             </form>
+              <label id="errorMessage" style="text-shadow: 0 0px;font-size: 0.7em;color: #ff0000;"> &nbsp;</label>
               <a href="#" style="text-align: right;display: block;text-shadow: 0 0px;font-size: 0.7em;font-style: italic;color: #FFF;">¿Necesitas ayuda?</a>
               
           </div>

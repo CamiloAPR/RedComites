@@ -29,7 +29,7 @@
 	font-weight: bold;
 }
 .ui-page{
-	background-color: #0d7984;
+	background-color: #0d7984 !important;
 }
 hr {
 	border: 0;
@@ -162,4 +162,15 @@ p#formulario{
 	padding-bottom: 7px; 
 	font-weight: lighter;
 	font-size: 11px;
+}
+
+.tablist-left {
+    width: 25%;
+    display: inline-block;
+}
+.tablist-content {
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
 }
