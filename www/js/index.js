@@ -53,10 +53,29 @@ $(document).on("pagecreate","#main",function(){
   });
 });
 
-$(document).on("pagecreate","#committee",function(){
+$(document).on("pagebeforeshow","#committee",function(){
+  var callback = function(data){
+    data = data[0];
+    $("#logoCommittee").attr('src', data["icon"]);
+    $("#nameCommittee").text(data["name"]);
+    $("#committeeInfo").css('background',data["color"]);
+    var miembros = "<p class='text'>";
+    for(var i = 0; i < data["members"].length; i++){
+        miembros += "<b>"+data["members"][i].name+"</b></br>" +"<i>"+data["members"][i].email+"</i></br></br>"; 
+    }
+    miembros += "</p>";
 
-  loadCommittees();
-  loadPublications();
+    $("#infoCommittee").text(data["general_info"]);
+    $("#functionsCommittee").text(data["function"]);
+    $("#membersCommittee").append(miembros);
+    $("#emailCommittee").text(data["email"]);
+    
+  }
+  if(urlParam("committee") !== undefined){
+    db_service.get("committee/committee_id/"+urlParam("committee"), callback);
+  }
+  // loadCommittees();
+  // loadPublications();
 });
 
 
@@ -117,10 +136,14 @@ function loadPublications(){
 }
 function showCommittee(id_committee){
     $.mobile.changePage('#committee', {
-        dataUrl: "index.html#committee?commitee="+id_committee,
+        dataUrl: "index.html#committee?committee="+id_committee,
         transition : "slideup"
     });
 }
 
+var urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1] || 0;
+}
 
 

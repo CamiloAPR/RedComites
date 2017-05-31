@@ -35,7 +35,7 @@
             <a href="#dialogoLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
           </div>
 
-          <div data-role="content">
+          <div id="pruebaContent" data-role="content">
             <div id="divPublications" style="text-align:center"></div>
           </div>
           <div class="pie" data-role="footer">
@@ -50,42 +50,38 @@
             <ul id="listCommittees" data-role="listview" data-inset="true" ></ul>
           </div><!-- /panel -->
           <div data-role="header" data-position="fixed">
-            <a href="#right-panel"  data-role="button" data-icon="home" data-theme="c" class="ui-btn-left ui-icon-home" data-iconpos="notext">Share</a>
+            <a href="#main"  data-role="button" data-icon="home" data-theme="c" class="ui-btn-left ui-icon-home" data-iconpos="notext">Share</a>
             <div class="logoUEB">
               <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">
             </div>
-            <h1></h1>
             
             <a href="#dialogoLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
           </div>
-          <div data-role="tabs">
-              <div class="tablist-left" data-position="fixed">
+          <div data-role="tabs" id="committeeInfo">
+              <div class="tablist-left"  data-position="fixed">
                 <div id="avatarLateral" >
-                    <div class="comite-icono"><img src="iconos/icon_comunicaciones_circle.png" width="125" height="125" border="0"></div>
+                    <div style="padding-top: 5px;"><img id="logoCommittee" width="125" height="125" border="0"></div>
                 </div>
                 <ul data-role="listview" id="listaMenu" data-inset="true">
-                  <li style="text-align: center; font-variant: small-caps;">Comit&eacute; de Comunicaciones</li>
-                  <li>Integrantes:
-                    <div class="comite-acercade">
-                      -Rodrigo Gomez<br>
-                       Docente<br>
-                       Ejemplo@unbosque.edu.co<br>
-                      -Luis Martinez<br>
-                       Docente<br>
-                       Ejemplo@unbosque.edu.co<br>
-                      -Natalia Perez<br>
-                       Docente<br>
-                       Ejemplo@unbosque.edu.co
-                       </div>
+                  <li id="nameCommittee" style="text-align: center; font-variant: small-caps;"></li>
+                  <li><p class="title-menu"><b>INTEGRANTES</b></p>
+                    <div id="membersCommittee" class="comite-acercade">
+                      
+                    </div>
                   </li>
-                  <li>Funciones:
-                    <div class="comite-acercade">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu. Nunc blandit ligula mi, in venenatis augue egestas at.
-                       </div>
+                  <li><p class="title-menu"><b>INFORMACIÓN</b></p>
+                    <div id="infoCommittee" class="text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu. Nunc blandit ligula mi, in venenatis augue egestas at.
+          
+                    </div>
                   </li>
-                  <li>Contacto:
-                    <div class="comite-acercade">Ejemplo@unbosque.edu.co</div>
+                  <li><p class="title-menu"><b>FUNCIONES</b></p>
+                    <div id="functionsCommittee" class="text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu. Nunc blandit ligula mi, in venenatis augue egestas at.
+          
+                    </div>
                   </li>
+                  <li id="emailCommittee" style="text-align: center;font-size: 1vw;background: #c9c9c9;font-weight: bold;"></li>
                 </ul>
               </div>      
               <div id="divPublications"  class="ui-body-d tablist-content" style="text-align:center">

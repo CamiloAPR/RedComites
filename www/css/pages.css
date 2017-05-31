@@ -165,7 +165,7 @@ p#formulario{
 }
 
 .tablist-left {
-    width: 25%;
+    width: 35%;
     display: inline-block;
 }
 .tablist-content {
@@ -173,4 +173,12 @@ p#formulario{
     display: inline-block;
     vertical-align: top;
     margin-left: 5%;
+}
+
+.text {
+	font-size: 0.6em !important;
+}
+.title-menu {
+	font-weight:bold;
+	margin-top: 0 !important;
 }

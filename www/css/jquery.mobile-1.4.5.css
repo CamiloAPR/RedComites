@@ -3581,12 +3581,12 @@ fieldset.ui-controlgroup {
 .ui-listview > .ui-li-divider,
 .ui-listview > li > a.ui-btn {
 	margin: 0;
-	display: block;
+	display: block; 
 	position: relative;
 	text-align: left;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	white-space: nowrap;
+	/*white-space: nowrap; REMOVED*/ 
 }
 .ui-listview > li > .ui-btn:focus {
 	z-index: 1;
