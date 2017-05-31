@@ -1,7 +1,11 @@
-$(document).on("pagebeforeshow","#main",function(){
+$(document).ready(function(){
+  $("[data-role = 'header'], [data-role = 'footer']").toolbar();
+  //$("[data-role = 'panel']").enhanceWithin().panel();
+});
+$(document).on("pagebeforeshow","#main, #newPublic",function(){
     // MENU IZQUIERDO
     var menuTemplate ='<li style="text-align:center;" data-role="list-divider" data-theme="d" role="heading" class="ui-li-divider ui-bar-d ui-first-child">$comite</li>'+
-                      '<li><a href="#publicaciones" data-panel="main" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Publicaciones</a></li>'+
+                      '<li><a href="#newPublic" data-panel="main" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Publicaciones</a></li>'+
                       '<li><a href="#editarPerfil" data-panel="main" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Perfil</a></li>'+
                       '<li><a href="#editarContrasena" data-panel="main" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Cambiar contrase&ntilde;a</a></li>'+
                       '<hr>'+
@@ -11,6 +15,7 @@ $(document).on("pagebeforeshow","#main",function(){
     ];
     var dataMenuTemplate = [{field: "comite"}]
     ux_service.createHTMLComponents(menuTemplate, dataMenuTemplate, $("#listaMenu"), data);
+    ux_service.createHTMLComponents(menuTemplate, dataMenuTemplate, $("#listaMenu2"), data);
     
     // PUBLICACIONES
     var publicacionesTemplate = '<div class="public-destacado">'+
@@ -44,3 +49,5 @@ $(document).on("pagebeforeshow","#main",function(){
     ux_service.createHTMLComponents(publicacionesTemplate, dataPublicacionesTemplate, $("#divPublicaciones"), data);
 
 });
+
+
