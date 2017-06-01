@@ -17,48 +17,46 @@
     </head> 
 
     <body> 
-      <div data-role="page" class="ui-responsive-panel"  id="main">
-          <div data-role="panel" id="right-panel" data-display="push" data-position="left" style="margin: 0; background-color: #0d7984">
-           <div class="titulo">
-                    <h1>Comités Facultad de Ingeniería</h1>
-            </div>
-            <ul id="listCommittees" data-role="listview" data-inset="true" ></ul>
-          </div><!-- /panel -->
-          <div data-role="header" data-position="fixed">
-            <a href="#right-panel"  data-role="button" data-icon="bullets" data-theme="c" class="ui-btn-left ui-icon-bullets" data-iconpos="notext"></a>
-            <div class="logoUEB">
-              <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">
-            </div>
-            <h1></h1>
-            
-            
-            <a href="#dialogoLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
-          </div>
 
-          <div id="pruebaContent" data-role="content">
-            <div id="divPublications" style="text-align:center"></div>
-          </div>
-          <div class="pie" data-role="footer">
-            Vigilada Mineducación. Personería Jurídica otorgada mediante resolución 11153 del 4 de agosto de 1978.
-          </div>
-      </div> 
-      <div data-role="page" id="committee">
+      <div class="pie" data-role="footer" data-position="fixed">
+        Vigilada Mineducación. Personería Jurídica otorgada mediante resolución 11153 del 4 de agosto de 1978.
+      </div>
+
+      <div data-role="page" class="ui-responsive-panel"  id="main">
           <div data-role="panel" id="right-panel" data-display="overlay" data-position="left" style="margin: 0; background-color: #0d7984">
            <div class="titulo">
                     <h1>Comités Facultad de Ingeniería</h1>
             </div>
             <ul id="listCommittees" data-role="listview" data-inset="true" ></ul>
           </div><!-- /panel -->
+          <div data-role="header" class="headers"  data-position="fixed">
+            <a href="#right-panel"  data-role="button" data-icon="bullets" data-theme="c" class="ui-btn-left ui-icon-bullets" data-iconpos="notext"></a>
+            <div class="logoUEB">
+              <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">
+            </div>
+            <h1></h1>
+            <a href="#login" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
+          </div>
+
+          <div id="pruebaContent" data-role="content">
+            <div id="divPublications" style="text-align:center"></div>
+          </div>
+
+      </div> 
+
+       <div data-role="dialog" data-corners="false"  data-theme="a" data-close-btn="right" id="test">
+       </div>
+      <div data-role="page" id="committee">
           <div data-role="header" data-position="fixed">
             <a href="#main"  data-role="button" data-icon="home" data-theme="c" class="ui-btn-left ui-icon-home" data-iconpos="notext">Share</a>
             <div class="logoUEB">
               <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">
             </div>
-            
-            <a href="#dialogoLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
+            <h1></h1>
+            <a href="#dialogLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
           </div>
-          <div data-role="tabs" id="committeeInfo">
-              <div class="tablist-left"  data-position="fixed">
+          <div data-role="tabs" >
+              <div class="tablist-left"  id="committeeInfo">
                 <div id="avatarLateral" >
                     <div style="padding-top: 5px;"><img id="logoCommittee" width="125" height="125" border="0"></div>
                 </div>
@@ -81,15 +79,17 @@
                   </li>
                   <li id="emailCommittee" style="text-align: center;font-size: 1vw;background: #c9c9c9;font-weight: bold;"></li>
                 </ul>
-              </div>      
-              <div id="divPublications"  class="ui-body-d tablist-content" style="text-align:center">
+              </div>
+              <div class="tablist-content"><img style="max-width: 37vw" id="bannerCommittee" border="0">
+                <div id="banner" style="text-align:center;margin-bottom:15px;">
+                  <img style="max-width: 100%" id="bannerCommittee" border="0">
+                </div>
+                lasjdlkasjdl
+                <div class="search-bar"></div>  
               </div>
           </div>
-          <div class="pie" data-role="footer">
-            Vigilada Mineducación. Personería Jurídica otorgada mediante resolución 11153 del 4 de agosto de 1978.
-          </div>
       </div> 
-      <div data-role="dialog" data-corners="false"  data-theme="a" data-close-btn="right" id="dialogoLogin">
+      <div data-role="dialog" data-corners="false"  data-theme="a" data-close-btn="right" id="login">
 
           <div data-role="header">
             <div class="logoUEB">

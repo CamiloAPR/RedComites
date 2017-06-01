@@ -87,12 +87,10 @@
 .ui-dialog-background {
 	opacity: 0.5;
 	display: block !important;
-	-webkit-transition: opacity 0.5s ease-in;
 }
 
 .ui-dialog-background.pop.in {
 	opacity: 1;
-	-webkit-transition: opacity 0.5s ease-in;
 }
 
 .ui-dialog {
@@ -103,4 +101,10 @@
 .formLabel{
 	text-align:left;
 	color: #FFF;
+}
+
+.committee {
+	padding-top: 0.2em !important;
+	padding-bottom: 0.2em;
+
 }

@@ -1,8 +1,12 @@
+$(document).ready(function(){
+  $("[data-role = 'footer']").toolbar();
 
+});
 
 
 $(document).on("pagecreate","#main",function(){
 
+ 
 
     /*
     * Login function
@@ -57,8 +61,10 @@ $(document).on("pagebeforeshow","#committee",function(){
   var callback = function(data){
     data = data[0];
     $("#logoCommittee").attr('src', data["icon"]);
+    $("#bannerCommittee").attr('src', data["banner"]);
     $("#nameCommittee").text(data["name"]);
-    $("#committeeInfo").css('background',data["color"]);
+    // $("#avatar-bg").css('background',data["color"]);
+
     var miembros = "<p class='text'>";
     for(var i = 0; i < data["members"].length; i++){
         miembros += "<b>"+data["members"][i].name+"</b></br>" +"<i>"+data["members"][i].email+"</i></br></br>"; 
@@ -80,11 +86,11 @@ $(document).on("pagebeforeshow","#committee",function(){
 
 
 function loadCommittees(){
-    var templateCommittees = '<li class="comite">'+
-        '<a style="background-color:$color;" href="#" onclick="showCommittee($id)" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> '+
+    var templateCommittees = '<li>'+
+        '<a style="background-color:var.color;" href="#" onclick="showCommittee(var.id)" class="ui-btn ui-btn-icon-right ui-icon-carat-r committee" style="padding-top:0.2em !important; padding-bottom:0.2em !important"> '+
           '<div class="botonMenu" >'+
-            '<div class="punto"><img src="$icon" width="26" height="26" border="0"></div>'+
-            '<div class="nombre">$name</div>'+
+            '<div class="punto"><img src="var.icon" width="26" height="26" border="0"></div>'+
+            '<div class="nombre">var.name</div>'+
           '</div>'+
        ' </a>'+
       '</li>'
@@ -109,13 +115,13 @@ function loadCommittees(){
 }
 function loadPublications(){
    var publicationsTemplate = '<div class="public-destacado">'+
-      '<div style="background-color: $color" class="public-encabezado">'+
-        '<div class="public-titulo">$title </div>'+
-        '<div class="public-fecha">$date</div></div>'+
+      '<div style="background-color: var.color" class="public-encabezado">'+
+        '<div class="public-titulo">var.title </div>'+
+        '<div class="public-fecha">var.date</div></div>'+
       '<div class="public-contenido">'+
-        '<div class="public-resumen">$content</div>'+
+        '<div class="public-resumen">var.content</div>'+
         '<div class="public-imagen"></div>'+
-        '<div style="color: $color;" class="public-comite">$name</div>'+
+        '<div style="color: var.color;" class="public-comite">var.name</div>'+
       '</div></div>';
 
   var dataPublicationsTemplate = [{field: "color"}, {field: "name"},{field: "content"},{field: "date"}]

@@ -107,6 +107,7 @@ h6 {
 	width: 240px;
 	font-style: italic;
 }
+
 p#nuevo{
 	font-size: 1.5em;
 		border-bottom: 1px solid #9C9E9E;
@@ -156,6 +157,7 @@ p#formulario{
     background-image: none;
 }
 .headers {
+	background-color: #FFF;
 	border-bottom:solid #E8771D;
 	border-top: none;
 }
@@ -173,7 +175,7 @@ p#formulario{
     display: inline-block;
 }
 .tablist-content {
-    width: 60%;
+    width: 50%;
     display: inline-block;
     vertical-align: top;
     margin-left: 5%;
@@ -184,4 +186,23 @@ p#formulario{
 .title-menu {
 	font-weight:bold;
 	margin-top: 0 !important;
+}
+
+.search-bar {
+	margin: auto;
+	width: 85% !important;
+	background-color: #FFF;
+	border-radius: 7px;
+	padding-left: 10% !important;
+	padding-top: 3px;
+	margin-bottom: 10px;
+	margin-left: 2.5%;
+	padding-right: 3% !important;
+}
+
+#avatar-bg{
+	height:150px;
+	border-radius: 10px;
+	margin-bottom:-14px;
+	text-align: center;
 }
