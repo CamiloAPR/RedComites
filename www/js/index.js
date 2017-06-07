@@ -1,8 +1,9 @@
+var mainPublications;
+
 $(document).ready(function(){
   $("[data-role = 'footer']").toolbar();
 
 });
-
 
 $(document).on("pagecreate","#main",function(){
 
@@ -73,13 +74,46 @@ $(document).on("pagebeforeshow","#committee",function(){
 
     $("#infoCommittee").text(data["general_info"]);
     $("#functionsCommittee").text(data["function"]);
-    $("#membersCommittee").append(miembros);
-    $("#emailCommittee").text(data["email"]);
-    
+    $("#membersCommittee").empty().append(miembros);
+    var email = "\'"+data["email"]+"\'";
+    var contact = '<a href="#" onclick="sendMail('+email+')" target="_blank">'+
+                      '<img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Enviar un correo" style="width: 2em;height: 2em;"></a>';
+    $("#emailCommittee").empty().append("<p>"+data["email"]+"</p>").append(contact);
+
+    var publicationsTemplate = '<div class="public-destacado">'+
+      '<a href="#" onclick="showPublication(var.id)" style="text-decoration: none;"><div style="background-color: '+data["color"]+'" class="public-encabezado">'+
+        '<div class="public-titulo">var.title </div>'+
+        '<div class="public-fecha">var.publication_date</div></div></a>'+
+      '<div class="public-contenido">'+
+        '<div class="public-resumen">var.content</div>'+
+        // '<div class="public-imagen"></div>'+
+      '</div></div>';
+  
+  var dataPublicationsTemplate = [{field: "id"},{field: "title"},{field: "color"}, {field: "content"},{field: "publication_date"}]
+  ux_service.createHTMLComponents(publicationsTemplate, dataPublicationsTemplate, $("#committeePublications"), data["publications"]);
+  console.log(data["publications"]);
   }
+
   if(urlParam("committee") !== undefined){
     db_service.get("committee/committee_id/"+urlParam("committee"), callback);
   }
+  
+});
+$(document).on("pagebeforeshow","#viewPublication",function(){
+  if(mainPublications === undefined){
+    var callback = function(data){
+      var selectedPublication = data[0];
+      showPublicationInfo(selectedPublication);
+    }
+    if(urlParam("publication") !== undefined){
+      db_service.get("publication/publication_id/"+urlParam("publication"), callback);
+    }
+  }else{
+     if(urlParam("publication") !== undefined){
+      showPublication(urlParam("publication"));
+    }
+  }
+  
   // loadCommittees();
   // loadPublications();
 });
@@ -94,57 +128,30 @@ function loadCommittees(){
           '</div>'+
        ' </a>'+
       '</li>'
-    // var data = [ 
-    //   {name:"Responsabilidad Social", color:"#FF7D1F", page:"#", icon:"iconos/icon_rsu_circle.png"},
-    //   {name:"Egresados", color:"#4C6BA2", page:"#", icon:"iconos/icon_egresados_circle.png"},
-    //   {name:"Calidad", color:"#E52B33", page:"#", icon:"iconos/icon_calidad_circle.png"},
-    //   {name:"Educación Continuada", color:"#20B07F", page:"#", icon:"iconos/icon_continuada_circle.png"},
-    //   {name:"Curricular", color:"#F15A4B", page:"#", icon:"iconos/icon_curricular_circle.png"},
-    //   {name:"Comunicaciones", color:"#AECC60", page:"#", icon:"iconos/icon_comunicaciones_circle.png"},
-    //   {name:"Investigaciones", color:"#C12E86", page:"#", icon:"iconos/icon_investigacion_circle.png"},
-    //   {name:"Externo", color:"#619543", page:"#", icon:"iconos/icon_externo_circle.png"},
-    //   {name:"Éxito Estudiantil", color:"#662D91", page:"#", icon:"iconos/icon_exito_circle.png"},
-    //   {name:"Internacionalización", color:"#42BDED", page:"#", icon:"iconos/icon_internacionalizacion_circle.png"},
-    //   {name:"TIC", color:"#F9B924", page:"#", icon:"iconos/icon_tic_circle.png"}
-    // ];
     var dataTemplateCommittees = [{field: "id"}, {field: "color"}, {field: "name"},{field: "page"},{field: "icon"}]
     callback = function(data){
       return ux_service.createHTMLComponents(templateCommittees, dataTemplateCommittees, $("#listCommittees"), data);
     }
     db_service.get("committee", callback);
 }
+
 function loadPublications(){
-
-
    var publicationsTemplate = '<div class="public-destacado">'+
-      '<div style="background-color: var.color" class="public-encabezado">'+
+      '<a href="#" onclick="showPublication(var.id)" style="text-decoration: none;"><div style="background-color: var.color" class="public-encabezado">'+
         '<div class="public-titulo">var.title </div>'+
-        '<div class="public-fecha">var.publication_date</div></div>'+
+        '<div class="public-fecha">var.publication_date</div></div></a>'+
       '<div class="public-contenido">'+
         '<div class="public-resumen">var.content</div>'+
         // '<div class="public-imagen"></div>'+
         '<div style="color: var.color;" class="public-comite">var.name</div>'+
       '</div></div>';
   
-  var dataPublicationsTemplate = [{field: "title"},{field: "color"}, {field: "name"},{field: "content"},{field: "publication_date"}]
-  // data = [ 
-  //   {name:"Responsabilidad Social", color:"#FF7D1F", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Egresados", color:"#4C6BA2", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Calidad", color:"#E52B33", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Educación Continuada", color:"#20B07F", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Curricular", color:"#F15A4B", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Comunicaciones", color:"#AECC60", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Investigaciones", color:"#C12E86", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Externo", color:"#619543", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Éxito Estudiantil", color:"#662D91", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"Internacionalización", color:"#42BDED", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."},
-  //   {name:"TIC", color:"#F9B924", date:"25/05/2017", content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies diam arcu, eu aliquam enim semper eu."}
-  // ];
+  var dataPublicationsTemplate = [{field: "id"},{field: "title"},{field: "color"}, {field: "name"},{field: "content"},{field: "publication_date"}]
   callback = function(data){
+    mainPublications = data;
     return ux_service.createHTMLComponents(publicationsTemplate, dataPublicationsTemplate, $("#divPublications"), data);
   }
   db_service.get("publication", callback);
- 
 }
 function showCommittee(id_committee){
     $.mobile.changePage('#committee', {
@@ -152,7 +159,54 @@ function showCommittee(id_committee){
         transition : "slideup"
     });
 }
+function showPublication(id_publication){
+  var selectedPublication = null;
+  for(var i = 0; i < mainPublications.length; i++){
+    if(mainPublications[i]["id"] == id_publication){
+      selectedPublication = mainPublications[i];
+      break;
+    }
+  }
 
+  showPublicationInfo(selectedPublication);
+  
+}
+function showPublicationInfo(selectedPublication){
+  if(selectedPublication != null){
+    $.mobile.changePage('#viewPublication', {
+        dataUrl: "index.html#viewPublication?publication="+selectedPublication["id"],
+        transition : "slideup"
+    });
+    $("#titlePublication").text(selectedPublication["title"]);
+    $("#bodyPublication").css("background-color",selectedPublication["color"]);
+    var header = '<p style="text-align:left"><i>Fecha de publicación: '+selectedPublication["publication_date"]+'</i></p><p style="text-align:left"><b>'+selectedPublication["name"]+'</b></p>'; 
+    $("#contentPublication").empty().append(header).append(selectedPublication["content"]);
+  }else{
+    alert("La publicación no existe");
+  }
+}
+
+function shareLink(url){
+  // url = url + encodeURIComponent(window.location);
+  var link="http://redcomites.herokuapp.com/index.html"+window.location.hash;
+  window.open(url+encodeURIComponent(link), '_blank');
+}
+
+function sendMail(to){
+  // if(isMobile()){
+  //   window.open("googlegmail://co?to="+to,"_blank");
+  // }else{
+    window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to="+to, "_blank");
+  // }
+}
+
+function isMobile(){
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    return true;
+  }else{
+    return false;
+  }
+}
 var urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     return results[1] || 0;

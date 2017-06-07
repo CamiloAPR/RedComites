@@ -1,6 +1,6 @@
 // var host = "http://localhost:8000/"
 // var host = "https://redcomitesbackend.herokuapp.com/"
-var host = "http://192.168.0.26:8000/"
+var host = "http://192.168.0.26:8080/"
 
 var db_service = {
 
@@ -67,13 +67,14 @@ var db_service = {
             type: 'POST',
             async: false,
             data:  _data,
-            // contentType:"application/json",                         
+            contentType:"application/json",                         
             success: function(data, textStatus, jqXHR){
                 callback(data);
                 return true;
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('error, ubicación: '+ host+url);
+                console.log(jqXHR);
                 console.log(jqXHR.responseText);
                 console.log(errorThrown);
                 console.log(textStatus);

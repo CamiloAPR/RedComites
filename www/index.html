@@ -38,14 +38,54 @@
             <a href="#login" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
           </div>
 
-          <div id="pruebaContent" data-role="content">
+          <div id="pruebaContent" data-role="content" style="overflow-y: hidden;">
             <div id="divPublications" style="text-align:center"></div>
           </div>
 
       </div> 
+      <div data-role="page" class="ui-responsive-panel" data-add-back-btn="true" data-back-btn-text="Back"  id="viewPublication">
+          <div data-role="header" class="headers" style="min-height: 42.2px;"  data-position="fixed">
+                      <a data-rel="back" data-transition="slidedown" data-role="button" data-theme="c" class="ui-btn-left" data-corners="false" >Volver</a>
+            <h1 id="titlePublication" style="white-space: normal;margin: 0 1% 0 30%;text-align: right;font-size: 2.5vmin;"></h1>
+          </div>
 
-       <div data-role="dialog" data-corners="false"  data-theme="a" data-close-btn="right" id="test">
-       </div>
+          <div id="bodyPublication" data-role="content">
+            <center>
+              <div id="contentPublication" style="font-size: 60%;width: 94%;background-color: #DDD; padding: 2%;border-radius: 15px;">
+
+
+              </div>
+              </br>
+              <div id="share-buttons">
+      
+                  <!-- Email -->
+                  <!--     
+                  <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+                      <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" class="shareIcon"/>
+                  </a> -->
+               
+                  <!-- Facebook -->
+                  <a href="#" onclick="shareLink('http://www.facebook.com/sharer.php?u=');" target="_blank" class="shareLink">
+                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" class="shareIcon"/>
+                  </a>
+                  <!-- Twitter -->
+                  <a href="#" onclick="shareLink('https://twitter.com/share?url=')" target="_blank" class="shareLink">
+                      <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" class="shareIcon"/>
+                  </a>                
+                  <!-- Google+ -->
+                  <a href="#" onclick="shareLink('https://plus.google.com/share?url=')" class="shareLink">
+                      <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" class="shareIcon" />
+                  </a>
+                  <!-- Print
+                  <a href="javascript:;" onclick="window.print()" class="shareLink">
+                      <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" class="shareIcon"/>
+                  </a> -->
+              </div>
+            </center>
+          </div>
+
+      </div> 
+
       <div data-role="page" id="committee">
           <div data-role="header" data-position="fixed">
             <a href="#main"  data-role="button" data-icon="home" data-theme="c" class="ui-btn-left ui-icon-home" data-iconpos="notext">Share</a>
@@ -53,11 +93,11 @@
               <img src="iconos/UEBlogo_rectangular.png" width="105" height="32" border="0">
             </div>
             <h1></h1>
-            <a href="#dialogLogin" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
+            <a href="#login" data-transition="slideup" data-role="button" data-rel="dialog" data-theme="c" class="ui-btn-right" data-corners="false" >Ingresar</a>
           </div>
           <div data-role="tabs" >
               <div class="tablist-left"  id="committeeInfo">
-                <div id="avatarLateral" >
+                <div id="avatarLateral" style="width:100%">
                     <div style="padding-top: 5px;"><img id="logoCommittee" width="125" height="125" border="0"></div>
                 </div>
                 <ul data-role="listview" id="listaMenu" data-inset="true">
@@ -77,14 +117,17 @@
           
                     </div>
                   </li>
-                  <li id="emailCommittee" style="text-align: center;font-size: 1vw;background: #c9c9c9;font-weight: bold;"></li>
+                  <li id="emailCommittee" style="text-align: center;font-size: 0.9em;background: #c9c9c9;font-weight: bold;">
+                  </li>
+
                 </ul>
               </div>
               <div class="tablist-content"><img style="max-width: 37vw" id="bannerCommittee" border="0">
-                <div id="banner" style="text-align:center;margin-bottom:15px;">
-                  <img style="max-width: 100%" id="bannerCommittee" border="0">
-                </div>
-                <div class="search-bar"></div>  
+                  <div id="banner" style="text-align:center;margin-bottom:15px;">
+                    <img style="width: 98%" id="bannerCommittee" border="0">
+                  </div>
+                  <div class="search-bar"></div>
+                  <div id="committeePublications" style="text-align:center"></div> 
               </div>
           </div>
       </div> 
@@ -104,10 +147,9 @@
                 <button type="submit" class="ui-btn ui-btn-inline" style="background-color:#CCFFA3;font-size:0.8em">Iniciar Sesión</button>
             </form>
               <label id="errorMessage" style="text-shadow: 0 0px;font-size: 0.7em;color: #ff0000;"> &nbsp;</label>
-              <a href="#" style="text-align: right;display: block;text-shadow: 0 0px;font-size: 0.7em;font-style: italic;color: #FFF;">¿Necesitas ayuda?</a>
-              
+              <a href="#" onclick="javascript:alert('Reporta tu problema al comité de comunicaciones')" style="text-align: right;display: block;text-shadow: 0 0px;font-size: 0.7em;font-style: italic;color: #FFF;">¿Necesitas ayuda?</a>
           </div>
-      </div> 
+      </div>
 
     </body>
   </html>
