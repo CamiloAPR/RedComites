@@ -16,8 +16,11 @@
 	text-align: center;
 }
 .panelGrid {
+	border-radius: 10px;
 	background-color: rgba(255, 255, 255, 0.45);
 	padding: 5px;
+	text-align: center;
+	margin-bottom: 15px;
 }
 .itemGrid {
 	text-align: center;
@@ -193,6 +196,14 @@ p#formulario{
     text-align: center;
     display: inline-block;
     vertical-align: top;
+}
+
+.formText {
+	font-variant: small-caps;
+	text-shadow: none;
+	font-weight: bold;
+	font-size: 1.3vw;
+	margin: 4px;
 }
 .text {
 	font-size: 0.6em !important;
