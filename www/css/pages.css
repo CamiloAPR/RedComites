@@ -12,7 +12,6 @@
 	background: rgba(255, 255, 255, 0.68);
 	height:150px;
 	border-radius: 10px;
-	padding-top: 12px;
 	margin-bottom:-14px;
 	text-align: center;
 }
@@ -48,28 +47,38 @@ h6 {
 	display: inline-block;
 	border-radius: 8px;
 	background-color: #FFFFFF;
-	width: 300px;
-	height: 147px;
+	width: 48%;
+	height: 300px;
 	margin-left: 1%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-right: 5px;
+	min-width: 400px;
+}
+.public-fecha {
+	margin-top: 12px;
+	width: 100px;
+	height: 27px;
+	font-size: 11px;
+	text-align: right;
+	text-shadow: none;
+	color: #FFF;
+	font-style: italic;
+	display: inline;
 }
 .public-encabezado {
-	float: left;
 	border-radius: 8px 8px 0px 0px;
 	background-color: #FFAA00;
 	padding-left: 15px;
-	width: 285px;
 	height: 35px;
 }
 .public-titulo {
 	float: left;
-	text-align:left;
+	text-align: left;
 	text-shadow: none;
 	margin-top: 10px;
 	color: #FFF;
-	width: 150px;
+	width: 81%;
 	height: 20px;
 }
 .public-iconos {	
@@ -84,9 +93,9 @@ h6 {
 	float: left;
 	margin-top: 12px;
 	margin-left: 15px;
-	width: 180px;
-	height: 75px;
-	font-size: 14px;
+	width: 95%;
+	height: 79%;
+	font-size: 8px;
 	overflow: hidden;
 }
 .public-imagen {
@@ -99,18 +108,22 @@ h6 {
 	border-color: green;
 	border-width: 1px;
 }
+.public-contenido {
+	height: 100%;
+}
 .public-comite {
 	font-size: 10px;
 	text-align: right;
 	text-shadow: none;
 	float: right;
 	color: #FFAA00;
-	padding-right: 5%;
+	padding-right: 2%;
 	margin-top: 1px;
 	height: 20px;
 	width: 240px;
 	font-style: italic;
 }
+
 p#nuevo{
 	font-size: 1.5em;
 		border-bottom: 1px solid #9C9E9E;
@@ -160,6 +173,7 @@ p#formulario{
     background-image: none;
 }
 .headers {
+	background-color: #FFF;
 	border-bottom:solid #E8771D;
 	border-top: none;
 }
@@ -173,11 +187,11 @@ p#formulario{
 	border: none;
 }
 .tablist-left {
-    width: 25%;
+    width: 35%;
     display: inline-block;
 }
 .tablist-content {
-    width: 60%;
+    width: 50%;
     display: inline-block;
     vertical-align: top;
     margin-left: 5%;
@@ -189,4 +203,30 @@ p#formulario{
 	font-weight: bold;
 	font-size: 1.3vw;
 	margin: 4px;
+}
+.text {
+	font-size: 0.6em !important;
+}
+.title-menu {
+	font-weight:bold;
+	margin-top: 0 !important;
+}
+
+.search-bar {
+	margin: auto;
+	width: 85% !important;
+	background-color: #FFF;
+	border-radius: 7px;
+	padding-left: 10% !important;
+	padding-top: 3px;
+	margin-bottom: 10px;
+	margin-left: 2.5%;
+	padding-right: 3% !important;
+}
+
+#avatar-bg{
+	height:150px;
+	border-radius: 10px;
+	margin-bottom:-14px;
+	text-align: center;
 }
