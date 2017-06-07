@@ -17,28 +17,40 @@ $(document).on("pagecreate","#main",function(){
       var email = $('#email').val();
       var password = $('#password').val();
       var callback = function(data){
+
+        loggedUser = (data["role"] === undefined)?undefined:data;
+        
         if(data["role"] === 1){
-          $('#formLogin').attr('action', 'indexAdmin.html');
+          // $('#formLogin').attr('action', 'indexAdmin.html');
+          location.replace("./indexAdmin.html");
         }else if( data["role"] === 2){
-          $('#formLogin').attr('action', 'indexCommittee.html');
+          // $('#formLogin').attr('action', 'indexCommittee.html');
+          location.replace("./indexComites.html");
         }else{
           $("#errorMessage").text(unescape(decodeURIComponent(data["error"])));
           var content = $("#dialogContent");
           var originalColor = content.css("background-color");
+
           $("#errorMessage").animate({
           opacity: 0
           }, 1000 )
+
           $("#errorMessage").animate({
           opacity: 1
           }, 200 )
-         
+
+          $("#errorMessage").animate({
+          opacity: 0
+          }, 1000 )
         }
       }
-      if(db_service.s_post("login/", {email: email, password: password}, callback)){
-        return true;
-      }else{
-        return false;
-      }
+      db_service.s_post("login/", {email: email, password: password}, callback);
+      //   console.log("true")
+      //   return true;
+      // }else{
+      //   console.log("false")
+      //   return false;
+      // }
       
     });
 
@@ -179,7 +191,7 @@ function showPublicationInfo(selectedPublication){
     });
     $("#titlePublication").text(selectedPublication["title"]);
     $("#bodyPublication").css("background-color",selectedPublication["color"]);
-    var header = '<p style="text-align:left"><i>Fecha de publicación: '+selectedPublication["publication_date"]+'</i></p><p style="text-align:left"><b>'+selectedPublication["name"]+'</b></p>'; 
+    var header = '<p style="text-align:right"> <b>'+selectedPublication["name"]+'</b> > <i>'+selectedPublication["publication_date"]+' </i> </p>'; 
     $("#contentPublication").empty().append(header).append(selectedPublication["content"]);
   }else{
     alert("La publicación no existe");

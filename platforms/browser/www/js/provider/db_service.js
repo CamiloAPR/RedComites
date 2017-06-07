@@ -67,7 +67,7 @@ var db_service = {
             type: 'POST',
             async: false,
             data:  _data,
-            contentType:"application/json",                         
+            // contentType:"application/json",                         
             success: function(data, textStatus, jqXHR){
                 callback(data);
                 return true;
