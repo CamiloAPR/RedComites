@@ -29,9 +29,6 @@ var db_service = {
         $.ajax({
             url: host+url,
             type: 'GET',
-            headers: {
-                    'Access-Control-Allow-Origin': '*'
-                },
             crossDomain: true,
             data: data,
 
