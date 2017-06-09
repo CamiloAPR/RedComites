@@ -229,6 +229,20 @@ $(document).on("pagebeforeshow","#main, #newPublic, #profile",function(){
       {nameMember:"Pedro Guillermo Feijoo Garcia", emailMember:"pfeijoo@unbosque.edu.co", functionMember:"Docente"},
     ];
     ux_service.createHTMLComponents(profileMemberTableTemplate, dataProfileMemberTableTemplate, $("#memberTableRows"), data);
+
+
 });
+
+function savePublication(){
+  var content=$(".Editor-editor").html();
+  var title=$("#publication-title").val();
+  var dateObj = new Date();
+  var month = dateObj.getUTCMonth() + 1; //months from 1-12
+  var day = dateObj.getUTCDate();
+  var year = dateObj.getUTCFullYear();
+  console.log(title);
+  var publication={committee: 1, title: title, content: content, publication_date: year+"-"+month+"-"+day}
+  db_service.post("/publication",publication,function(data){alert("Se ha agregado la publicación exitosamente!"); location.replace("./indexComites.html");});
+}
 
 
